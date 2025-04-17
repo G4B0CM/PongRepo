@@ -2,33 +2,38 @@ using UnityEngine;
 
 public class BallPosition : MonoBehaviour
 {
-    [SerializeField] private float startSpeed = 8f;
+    [SerializeField]
+    float velocidadInicial = 5f;
+    [SerializeField]
+    float incrementoVelocidad = 0.5f;
+    [SerializeField]
+    float velocidadMaxima = 10f;
+
+    int direccionActualX = 0;
+
     private Rigidbody2D rb;
+    private float velocidadActual;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Invoke("LaunchBall",1f);
+        velocidadActual = velocidadInicial;
+        IniciarPelota();
     }
 
-    
-    void LaunchBall()
+    public void IniciarPelota()
     {
-        
-        float xDirection = Random.value < 0.5f ? -1f : 1f;
-        float yDirection = Random.Range(-0.5f, 0.5f);
-
-        Vector2 direction = new Vector2(xDirection, yDirection).normalized;
-        rb.linearVelocity = direction * startSpeed;
+        Invoke("LanzarPelota", 1f);
     }
 
-    
-    public void ResetBall()
+    void LanzarPelota()
     {
-        rb.linearVelocity = Vector2.zero;
-        transform.position = Vector2.zero;
-        Invoke(nameof(LaunchBall), 1f); 
+        this.gameObject.transform.position = new Vector2(0, 0);
+        direccionActualX = Random.value < 0.5f ? -1 : 1;
+        Vector2 direccion = new Vector2(direccionActualX, Random.Range(-0.5f, 0.5f)).normalized;
+        rb.linearVelocity = direccion * velocidadActual;
     }
 
+   
 
 }
