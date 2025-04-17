@@ -12,16 +12,16 @@ public class WallBehaviour : MonoBehaviour
         scoreboard = FindFirstObjectByType<Scoreboard>();
         ball = FindFirstObjectByType<BallPosition>();
     }
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Entre");
-        if (collision.gameObject.tag == "Player" && this.tag == "Wall1")
+        if (collision.gameObject.tag == "Player")
         {
             scoreboard.IncreaseScorePlayer2(valorPuntos);
             ball.IniciarPelota();
         }
-        else if (collision.gameObject.tag == "Player" && this.tag == "Wall2")
+        else if (collision.gameObject.tag == "Player")
         {
             scoreboard.IncreaseScorePlayer1(valorPuntos);
             ball.IniciarPelota();

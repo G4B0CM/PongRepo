@@ -4,10 +4,6 @@ public class BallPosition : MonoBehaviour
 {
     [SerializeField]
     float velocidadInicial = 5f;
-    [SerializeField]
-    float incrementoVelocidad = 0.5f;
-    [SerializeField]
-    float velocidadMaxima = 10f;
 
     int direccionActualX = 0;
 

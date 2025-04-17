@@ -24,4 +24,5 @@ public class PaddlesBehaviour : MonoBehaviour
 
         rb.linearVelocity = new Vector2(0, move * speed);
     }
+    
 }
